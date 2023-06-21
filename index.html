@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>MyBookList</title>
     <link rel="stylesheet" href="./stylesheet.css" />
   </head>
   <body>
@@ -17,32 +17,31 @@
           <p>#</p>
           <p>Title</p>
           <p>Author</p>
-          <P>Pages</P>
+          <p>Pages</p>
           <p>Score</p>
           <p>Progress</p>
         </div>
       </div>
       <button id="new">NEW BOOK</button>
-    
     </div>
-    <dialog  class="modal" id="modal">
-      <form method="dialog" >
+    <dialog class="modal" id="modal">
+      <form method="dialog">
+        
         <div>
           <label for="book-title">Book Title:</label>
-          <input type="text" id="book-title">
+          <input type="text" id="book-title" />
         </div>
         <div>
           <label for="author">Author:</label>
-          <input type="text" id="author">
+          <input type="text" id="author" />
         </div>
         <div>
           <label for="pages">Pages:</label>
-          <input type="text" id="pages">
+          <input type="text" id="pages" />
         </div>
         <div>
-          
           <label for="score">Score:</label>
-          <select  id="score">
+          <select id="score">
             <option value="0">Select score</option>
             <option value="10">(10) Masterpiece</option>
             <option value="9">(9) Great</option>
@@ -58,10 +57,9 @@
         </div>
         <div>
           <label for="pages-read">Pages read:</label>
-          <input type=""  id="pages-read">
+          <input type="" id="pages-read" />
         </div>
-        <button type="submit">Submit </button>
-
+        <button type="submit">Submit</button>
       </form>
     </dialog>
     <script src="./index.js"></script>

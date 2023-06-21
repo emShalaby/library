@@ -16,6 +16,7 @@ button{
   color: rgb(109, 241, 237);
   margin-top: 2px;
   border-radius: 5%;
+  justify-self: center;
 
 }
 button:hover{
@@ -28,6 +29,8 @@ p{
 }
 dialog{
   margin: auto;
+  background-color: #4f5763;
+  color: aquamarine;
 }
 form{
   display: grid;
@@ -40,7 +43,9 @@ form>div{
   justify-content: space-between;
   gap: 1em;
 }
-
+input{
+  padding: .2em;
+}
 .container {
   display: grid;
   grid-template-rows: auto auto auto ;
