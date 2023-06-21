@@ -11,7 +11,9 @@ let book3 = new Book("HIJK", "VE", "124", 9, "70");
 let library = document.querySelector(".library");
 let myLibrary = [book1, book2, book3];
 
-function addBookToLibrary() {}
+function addBookToLibrary() {
+  
+}
 
 function displayBooks(book) {
   const order = document.createElement("p");

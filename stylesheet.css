@@ -8,10 +8,19 @@ body,html{
   height: 100%;
   width: 100%;
 }
+button{
+  height: 2em;
+  background-color: lightseagreen;
+  width: 10em;
+  color: rgb(109, 241, 237);
+}
+button:hover{
+  cursor: pointer;
+}
 
 .container {
   display: grid;
-  grid-template-rows: auto auto ;
+  grid-template-rows: auto auto auto ;
   justify-content: center;
   align-items: center;
   
