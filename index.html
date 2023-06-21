@@ -22,9 +22,48 @@
           <p>Progress</p>
         </div>
       </div>
-      <button>NEW BOOK</button>
+      <button id="new">NEW BOOK</button>
     
     </div>
+    <dialog  class="modal" id="modal">
+      <form method="dialog" >
+        <div>
+          <label for="book-title">Book Title:</label>
+          <input type="text" id="book-title">
+        </div>
+        <div>
+          <label for="author">Author:</label>
+          <input type="text" id="author">
+        </div>
+        <div>
+          <label for="pages">Pages:</label>
+          <input type="text" id="pages">
+        </div>
+        <div>
+          
+          <label for="score">Score:</label>
+          <select  id="score">
+            <option value="0">Select score</option>
+            <option value="10">(10) Masterpiece</option>
+            <option value="9">(9) Great</option>
+            <option value="8">(8) Very Good</option>
+            <option value="7">(7) Good</option>
+            <option value="6">(6) Fine</option>
+            <option value="5">(5) Average</option>
+            <option value="4">(4) Bad</option>
+            <option value="3">(3) Very Bad</option>
+            <option value="2">(2) Horrible</option>
+            <option value="1">(1) Appalling</option>
+          </select>
+        </div>
+        <div>
+          <label for="pages-read">Pages read:</label>
+          <input type=""  id="pages-read">
+        </div>
+        <button type="submit">Submit </button>
+
+      </form>
+    </dialog>
     <script src="./index.js"></script>
   </body>
 </html>

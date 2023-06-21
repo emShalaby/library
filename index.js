@@ -10,10 +10,10 @@ let book2 = new Book("EFG", "SE", "123", 10, "60");
 let book3 = new Book("HIJK", "VE", "124", 9, "70");
 let library = document.querySelector(".library");
 let myLibrary = [book1, book2, book3];
+let newBookBtn = document.querySelector("#new");
+const modal = document.querySelector(".modal");
 
-function addBookToLibrary() {
-  
-}
+function addBookToLibrary() {}
 
 function displayBooks(book) {
   const order = document.createElement("p");
@@ -31,3 +31,7 @@ function displayBooks(book) {
 }
 
 myLibrary.forEach(displayBooks);
+
+newBookBtn.addEventListener("click", () => {
+  modal.showModal();
+});

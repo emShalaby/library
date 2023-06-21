@@ -7,15 +7,38 @@
 body,html{
   height: 100%;
   width: 100%;
+  background-color: #1e293b;
 }
 button{
   height: 2em;
   background-color: lightseagreen;
   width: 10em;
   color: rgb(109, 241, 237);
+  margin-top: 2px;
+  border-radius: 5%;
+
 }
 button:hover{
   cursor: pointer;
+  border: solid 2px silver;
+
+}
+p{
+  color: #cbd5e1;
+}
+dialog{
+  margin: auto;
+}
+form{
+  display: grid;
+  grid-template-columns: auto ;
+  padding: 1em;
+  gap: 2em;
+}
+form>div{
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
 }
 
 .container {
@@ -59,4 +82,5 @@ button:hover{
   padding-bottom: 2em;
   margin-top: 1px;
 }
+
 
