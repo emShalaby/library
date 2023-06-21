@@ -3,7 +3,7 @@ function Book(name, author, pages, readStatus) {
   this.author = author;
   this.pagers = pages;
   this.readStatus = readStatus;
-  this.info = name + " by " + author + ". " + pages + ". " + readStatus;
+  this.info = [name, author, pages, readStatus];
 }
 let book1 = new Book("YDJS", "ME", "122 pages", "Not read yet");
 let book2 = new Book("YDJS", "ME", "122 pages", "Not read yet");
