@@ -28,21 +28,21 @@
       <form method="dialog">
         
         <div>
-          <label for="book-title">Book Title:</label>
-          <input type="text" id="book-title" />
+          <label for="book-title" >Book Title:</label>
+          <input type="text" id="book-title" required />
         </div>
         <div>
           <label for="author">Author:</label>
-          <input type="text" id="author" />
+          <input type="text" id="author" required />
         </div>
         <div>
           <label for="pages">Pages:</label>
-          <input type="text" id="pages" />
+          <input type="number" id="pages" required />
         </div>
         <div>
           <label for="score">Score:</label>
-          <select id="score">
-            <option value="0">Select score</option>
+          <select id="score" required>
+            <option value="">Select score</option>
             <option value="10">(10) Masterpiece</option>
             <option value="9">(9) Great</option>
             <option value="8">(8) Very Good</option>
@@ -57,9 +57,11 @@
         </div>
         <div>
           <label for="pages-read">Pages read:</label>
-          <input type="" id="pages-read" />
+          <input type="number" id="pages-read" required/>
+          
         </div>
-        <button type="submit" id="submit">Submit</button>
+
+        <button type="submit" id="submit" >Submit</button>
       </form>
     </dialog>
     <script src="./index.js"></script>

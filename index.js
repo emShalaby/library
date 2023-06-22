@@ -12,6 +12,7 @@ let library = document.querySelector(".library");
 let myLibrary = [book1, book2, book3];
 let newBookBtn = document.querySelector("#new");
 const modal = document.querySelector(".modal");
+let inputs = Array.from(document.forms[0])//to get rid of submit;
 let submitBtn = document.querySelector("#submit");
 
 function addBookToLibrary() {}
@@ -38,6 +39,13 @@ newBookBtn.addEventListener("click", () => {
 });
 
 submitBtn.addEventListener("click", () => {
+  let inputChecker = 0;
+  inputs.forEach((input) => {
+    if (input.value != "") inputChecker++;
+  });
+  console.log(inputChecker);
+  if (inputChecker < inputs.length-1) return;
+
   myLibrary.push(
     new Book(
       document.querySelector("#book-title").value,
