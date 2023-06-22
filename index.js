@@ -12,7 +12,7 @@ let library = document.querySelector(".library");
 let myLibrary = [book1, book2, book3];
 let newBookBtn = document.querySelector("#new");
 const modal = document.querySelector(".modal");
-let inputs = Array.from(document.forms[0])//to get rid of submit;
+let inputs = Array.from(document.forms[0]); //to get rid of submit;
 let submitBtn = document.querySelector("#submit");
 
 function addBookToLibrary() {}
@@ -44,15 +44,19 @@ submitBtn.addEventListener("click", () => {
     if (input.value != "") inputChecker++;
   });
   console.log(inputChecker);
-  if (inputChecker < inputs.length-1) return;
-
+  if (inputChecker < inputs.length - 1) return;
+  let pagesRead =
+    document.querySelector("#pages-read").value >
+    document.querySelector("#pages").value
+      ? document.querySelector("#pages").value
+      : document.querySelector("#pages-read").value; // if pagesRead is bigger than the actual number of pages of the book
   myLibrary.push(
     new Book(
       document.querySelector("#book-title").value,
       document.querySelector("#author").value,
       document.querySelector("#pages").value,
       document.querySelector("#score").value,
-      document.querySelector("#pages-read").value
+      pagesRead
     )
   );
   displayBooks(myLibrary[myLibrary.length - 1]);
