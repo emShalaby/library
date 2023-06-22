@@ -21,10 +21,16 @@ const inputs = Array.from(document.forms[0]).slice(0, -1); //to get rid of submi
 const submitBtn = document.querySelector("#submit");
 function orderLibrary(myLibrary) {
   myLibrary.sort((a, b) => {
-    if (a.status == "completed" && b.status == ("pending" | "ongoing"))
+    if (
+      a.status == "completed" &&
+      (b.status == "pending" || b.status == "ongoing")
+    )
       return -1;
     if (a.status == "ongoing" && b.status == "pending") return -1;
-    if (b.status == "completed" && a.status == ("pending" | "ongoing"))
+    if (
+      b.status == "completed" &&
+      (a.status == "pending" || a.status == "ongoing")
+    )
       return 1;
     if (b.status == "ongoing" && a.status == "pending") return 1;
     else return 0;
