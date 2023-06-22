@@ -25,7 +25,7 @@
       <button id="new">NEW BOOK</button>
     </div>
     <dialog class="modal" id="new-book-modal">
-      <img src="./close-icon.svg" alt="x" width="10rem" class="close">
+      <img src="./close-icon.svg" alt="x" width="10rem" class="close" />
       <form method="dialog">
         <div>
           <label for="book-title">Book Title:</label>
@@ -64,7 +64,7 @@
       </form>
     </dialog>
     <dialog class="modal" id="edit-book-modal">
-      <img src="./close-icon.svg" alt="x" width="10rem" class="close">
+      <img src="./close-icon.svg" alt="x" width="10rem" class="close" />
       <form method="dialog">
         <div>
           <label for="edit-book-title">Book Title:</label>
@@ -82,6 +82,7 @@
           <label for="edit-score">Score:</label>
           <select id="edit-score" class="score" required>
             <option value="">Select score</option>
+            <option value="N/A">N/A</option>
             <option value="10">(10) Masterpiece</option>
             <option value="9">(9) Great</option>
             <option value="8">(8) Very Good</option>
@@ -96,7 +97,12 @@
         </div>
         <div>
           <label for="edit-pages-read">Pages read:</label>
-          <input type="number" id="edit-pages-read" class="readPages" required />
+          <input
+            type="number"
+            id="edit-pages-read"
+            class="readPages"
+            required
+          />
         </div>
 
         <button type="submit" id="edit-submit">Submit</button>

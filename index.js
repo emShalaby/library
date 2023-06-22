@@ -10,9 +10,21 @@ function Book(title, author, pages, score, readPages) {
   this.status =
     readPages == pages ? "completed" : readPages == 0 ? "pending" : "ongoing";
 }
-let book1 = new Book("ABCD", "ME", "122", 8, 122);
-let book2 = new Book("EFG", "SE", "123", 10, 0);
-let book3 = new Book("HIJK", "VE", "124", 9, 120);
+let book1 = new Book(
+  "Automate the boring stuff with Python",
+  "Ai Sweigart",
+  504,
+  6,
+  504
+);
+let book2 = new Book(
+  "Refactoring UI",
+  "Adam Wathan & Steve Schoger",
+  218,
+  7,
+  62
+);
+let book3 = new Book("Code", "Charles Petzold", 400, "N/A", 0);
 let myLibrary = [book1, book2, book3];
 let openBook = {};
 const library = document.querySelector(".library");
