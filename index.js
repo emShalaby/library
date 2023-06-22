@@ -12,6 +12,7 @@ let library = document.querySelector(".library");
 let myLibrary = [book1, book2, book3];
 let newBookBtn = document.querySelector("#new");
 const modal = document.querySelector(".modal");
+let submitBtn = document.querySelector("#submit");
 
 function addBookToLibrary() {}
 
@@ -34,4 +35,17 @@ myLibrary.forEach(displayBooks);
 
 newBookBtn.addEventListener("click", () => {
   modal.showModal();
+});
+
+submitBtn.addEventListener("click", () => {
+  myLibrary.push(
+    new Book(
+      document.querySelector("#book-title").value,
+      document.querySelector("#author").value,
+      document.querySelector("#pages").value,
+      document.querySelector("#score").value,
+      document.querySelector("#pages-read").value
+    )
+  );
+  displayBooks(myLibrary[myLibrary.length - 1]);
 });
