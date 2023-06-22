@@ -48,6 +48,8 @@ input {
 .container {
   display: grid;
   grid-template-rows: auto auto auto;
+  grid-template-columns: 1fr;
+
   justify-content: center;
   align-items: center;
 }
@@ -57,9 +59,10 @@ input {
   text-align: center;
   color: gray;
   padding: 1em;
+  
 }
 .library {
-  border: solid 1px;
+
   display: grid;
   grid-template-rows: repeat(3, 1fr);
 }
@@ -100,6 +103,12 @@ input {
   border-left: solid 4px #b91c1c;
 }
 
-.ongoing{
-  border-left: solid 4px #eab308 ;
+.ongoing {
+  border-left: solid 4px #eab308;
+}
+.close {
+  margin: 1em;
+}
+.close:hover {
+  cursor: pointer;
 }
