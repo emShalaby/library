@@ -16,8 +16,6 @@ const modal = document.querySelector(".modal");
 let inputs = Array.from(document.forms[0]).slice(0, -1); //to get rid of submit;
 let submitBtn = document.querySelector("#submit");
 
-function addBookToLibrary() {}
-
 function displayBooks(book) {
   const order = document.createElement("p");
   const div = document.createElement("div");
@@ -36,6 +34,10 @@ function displayBooks(book) {
   book.info.forEach((elem) => {
     const p = document.createElement("p");
     p.innerText = elem;
+    if (elem == book.info[0]) {
+      p.style.fontWeight = 600;
+      p.style.fontSize = "1.1em";
+    }
     div.appendChild(p);
   });
   library.appendChild(div);
