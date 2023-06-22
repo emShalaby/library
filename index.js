@@ -14,7 +14,7 @@ let book1 = new Book("ABCD", "ME", "122", 8, 122);
 let book2 = new Book("EFG", "SE", "123", 10, 0);
 let book3 = new Book("HIJK", "VE", "124", 9, 120);
 let myLibrary = [book1, book2, book3];
-let editBookBtns = Array.from(document.querySelectorAll("edit-book"));
+let openBook = {};
 const library = document.querySelector(".library");
 const newBookBtn = document.querySelector("#new");
 const newBookModal = document.querySelector("#new-book-modal");
@@ -53,16 +53,6 @@ function displayBook(book) {
   editBtn.style.width = "1.5em";
   editBtn.classList.add("edit-btn");
 
-  editBtn.addEventListener("click", () => {
-    editBookModal.close();
-    editBookModal.showModal();
-    editInputs.forEach((input) => {
-      let editBookBtns = Array.from(document.querySelectorAll(".edit-btn"));
-      if (input.options) return;
-      input.value =
-        myLibrary[editBookBtns.indexOf(editBtn)][input.classList[0]];
-    });
-  });
   div2.appendChild(editBtn);
   div2.appendChild(order);
   div2.classList.add("first-box");
@@ -81,6 +71,20 @@ function displayBook(book) {
   if (book.readPages == book.pages) div.classList.add("completed");
   else if (book.readPages == 0) div.classList.add("pending");
   else div.classList.add("ongoing");
+  div.classList.add("B" + (order.innerText - 1));
+  editBtn.addEventListener("click", () => {
+    openBook = myLibrary.indexOf(
+      myLibrary[editBtn.parentNode.parentNode.classList[2].split("")[1]]
+    );
+    editBookModal.close();
+    editBookModal.showModal();
+    editInputs.forEach((input) => {
+      let editBookBtns = Array.from(document.querySelectorAll(".edit-btn"));
+      if (input.options) return;
+      input.value =
+        myLibrary[editBookBtns.indexOf(editBtn)][input.classList[0]];
+    });
+  });
 }
 
 orderLibrary(myLibrary);
@@ -118,19 +122,37 @@ newSubmitBtn.addEventListener("click", () => {
   editBookBtns = Array.from(document.querySelectorAll("edit-book"));
 });
 
-editBookBtns.forEach((btn) =>
-  btn.addEventListener("click", () => {
-    editBookModal.close();
-    editBookModal.showModal();
-    editInputs.forEach((input) => {
-      if (input.options) return;
-      input.value = myLibrary[editBookBtns.indexOf(btn)][input.classList[0]];
-    });
-  })
-);
 closeBtns.forEach((btn) =>
   btn.addEventListener("click", () => {
     editBookModal.close();
     newBookModal.close();
   })
 );
+
+editSubmitBtn.addEventListener("click", () => {
+  let inputChecker = 0;
+  editInputs.forEach((input) => {
+    if (input.value != "") inputChecker++;
+  });
+  if (inputChecker != newInputs.length) return;
+  delete myLibrary[openBook];
+  let pagesRead =
+    document.querySelector("#edit-pages-read").value >
+    document.querySelector("#edit-pages").value
+      ? document.querySelector("#edit-pages").value
+      : document.querySelector("#edit-pages-read").value; // if pagesRead is bigger than the actual number of pages of the book
+  let newBook = new Book(
+    document.querySelector("#edit-book-title").value,
+    document.querySelector("#edit-author").value,
+    document.querySelector("#edit-pages").value,
+    document.querySelector("#edit-score").value,
+    pagesRead
+  );
+  myLibrary.push(newBook);
+  orderLibrary(myLibrary);
+  Array.from(document.getElementsByClassName("book")).forEach((elem) =>
+    elem.remove()
+  );
+  myLibrary.forEach(displayBook);
+  editBookBtns = Array.from(document.querySelectorAll("edit-book"));
+});
