@@ -20,9 +20,17 @@ function addBookToLibrary() {}
 function displayBooks(book) {
   const order = document.createElement("p");
   const div = document.createElement("div");
+  const editBtn = document.createElement("img");
+  const div2 = document.createElement("div");
   order.innerText = Number(myLibrary.indexOf(book, 0)) + 1;
-  div.appendChild(order);
-
+  editBtn.src = "./threedots.svg";
+  editBtn.alt = "edit-icon";
+  editBtn.style.width = "1.5em";
+  editBtn.classList.add('edit-btn')
+  div2.appendChild(editBtn);
+  div2.appendChild(order);
+  div2.classList.add("first-box");
+  div.appendChild(div2);
   div.classList.add("book");
   book.info.forEach((elem) => {
     const p = document.createElement("p");
