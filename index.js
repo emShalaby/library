@@ -2,12 +2,13 @@ function Book(title, author, pages, score, readPages) {
   this.name = title;
   this.author = author;
   this.pages = pages;
+  this.readPages = readPages;
   let progress = readPages + "/" + pages;
   this.info = [title, author, pages, score, progress];
 }
-let book1 = new Book("ABCD", "ME", "122", 8, "50");
-let book2 = new Book("EFG", "SE", "123", 10, "60");
-let book3 = new Book("HIJK", "VE", "124", 9, "70");
+let book1 = new Book("ABCD", "ME", "122", 8, 122);
+let book2 = new Book("EFG", "SE", "123", 10, 0);
+let book3 = new Book("HIJK", "VE", "124", 9, 120);
 let library = document.querySelector(".library");
 let myLibrary = [book1, book2, book3];
 let newBookBtn = document.querySelector("#new");
@@ -26,7 +27,7 @@ function displayBooks(book) {
   editBtn.src = "./threedots.svg";
   editBtn.alt = "edit-icon";
   editBtn.style.width = "1.5em";
-  editBtn.classList.add('edit-btn')
+  editBtn.classList.add("edit-btn");
   div2.appendChild(editBtn);
   div2.appendChild(order);
   div2.classList.add("first-box");
@@ -38,6 +39,9 @@ function displayBooks(book) {
     div.appendChild(p);
   });
   library.appendChild(div);
+  if (book.readPages == book.pages) div.classList.add("completed");
+  else if (book.readPages == 0) div.classList.add("pending");
+  else div.classList.add("ongoing");
 }
 
 myLibrary.forEach(displayBooks);

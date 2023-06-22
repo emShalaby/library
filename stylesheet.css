@@ -92,3 +92,14 @@ input {
 .edit-btn:hover {
   cursor: pointer;
 }
+
+.completed {
+  border-left: solid 4px lightseagreen;
+}
+.pending {
+  border-left: solid 4px #b91c1c;
+}
+
+.ongoing{
+  border-left: solid 4px #eab308 ;
+}
