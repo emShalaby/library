@@ -11,12 +11,14 @@ function Book(title, author, pages, score, readPages) {
 let book1 = new Book("ABCD", "ME", "122", 8, 122);
 let book2 = new Book("EFG", "SE", "123", 10, 0);
 let book3 = new Book("HIJK", "VE", "124", 9, 120);
-let library = document.querySelector(".library");
 let myLibrary = [book1, book2, book3];
-let newBookBtn = document.querySelector("#new");
-const modal = document.querySelector(".modal");
-let inputs = Array.from(document.forms[0]).slice(0, -1); //to get rid of submit;
-let submitBtn = document.querySelector("#submit");
+let editBookBtns = document.querySelectorAll("edit-book");
+const library = document.querySelector(".library");
+const newBookBtn = document.querySelector("#new");
+const newBookModal = document.querySelector("#new-book-modal");
+const editBookModal = document.querySelector("#edit-book-modal");
+const inputs = Array.from(document.forms[0]).slice(0, -1); //to get rid of submit;
+const submitBtn = document.querySelector("#submit");
 function orderLibrary(myLibrary) {
   myLibrary.sort((a, b) => {
     if (a.status == "completed" && b.status == ("pending" | "ongoing"))
@@ -38,6 +40,7 @@ function displayBook(book) {
   editBtn.alt = "edit-icon";
   editBtn.style.width = "1.5em";
   editBtn.classList.add("edit-btn");
+  editBookBtns.push(editBtn);
   div2.appendChild(editBtn);
   div2.appendChild(order);
   div2.classList.add("first-box");
@@ -62,7 +65,8 @@ orderLibrary(myLibrary);
 myLibrary.forEach(displayBook);
 
 newBookBtn.addEventListener("click", () => {
-  modal.showModal();
+  newBookModal.showModal();
+  inputs.forEach((input) => (input.value = "")); //clearing input fields
 });
 
 submitBtn.addEventListener("click", () => {
