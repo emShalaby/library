@@ -5,6 +5,8 @@ function Book(title, author, pages, score, readPages) {
   this.readPages = readPages;
   let progress = readPages + "/" + pages;
   this.info = [title, author, pages, score, progress];
+  this.status =
+    readPages == pages ? "completed" : readPages == 0 ? "pending" : "ongoing";
 }
 let book1 = new Book("ABCD", "ME", "122", 8, 122);
 let book2 = new Book("EFG", "SE", "123", 10, 0);
@@ -15,8 +17,18 @@ let newBookBtn = document.querySelector("#new");
 const modal = document.querySelector(".modal");
 let inputs = Array.from(document.forms[0]).slice(0, -1); //to get rid of submit;
 let submitBtn = document.querySelector("#submit");
-
-function displayBooks(book) {
+function orderLibrary(myLibrary) {
+  myLibrary.sort((a, b) => {
+    if (a.status == "completed" && b.status == ("pending" | "ongoing"))
+      return -1;
+    if (a.status == "ongoing" && b.status == "pending") return -1;
+    if (b.status == "completed" && a.status == ("pending" | "ongoing"))
+      return 1;
+    if (b.status == "ongoing" && a.status == "pending") return 1;
+    else return 0;
+  });
+} //order library based on book status
+function displayBook(book) {
   const order = document.createElement("p");
   const div = document.createElement("div");
   const editBtn = document.createElement("img");
@@ -46,7 +58,8 @@ function displayBooks(book) {
   else div.classList.add("ongoing");
 }
 
-myLibrary.forEach(displayBooks);
+orderLibrary(myLibrary);
+myLibrary.forEach(displayBook);
 
 newBookBtn.addEventListener("click", () => {
   modal.showModal();
@@ -63,14 +76,17 @@ submitBtn.addEventListener("click", () => {
     document.querySelector("#pages").value
       ? document.querySelector("#pages").value
       : document.querySelector("#pages-read").value; // if pagesRead is bigger than the actual number of pages of the book
-  myLibrary.push(
-    new Book(
-      document.querySelector("#book-title").value,
-      document.querySelector("#author").value,
-      document.querySelector("#pages").value,
-      document.querySelector("#score").value,
-      pagesRead
-    )
+  let newBook = new Book(
+    document.querySelector("#book-title").value,
+    document.querySelector("#author").value,
+    document.querySelector("#pages").value,
+    document.querySelector("#score").value,
+    pagesRead
   );
-  displayBooks(myLibrary[myLibrary.length - 1]);
+  myLibrary.push(newBook);
+  orderLibrary(myLibrary);
+  Array.from(document.getElementsByClassName("book")).forEach((elem) =>
+    elem.remove()
+  );
+  myLibrary.forEach(displayBook);
 });
