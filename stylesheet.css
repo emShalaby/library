@@ -59,10 +59,8 @@ input {
   text-align: center;
   color: gray;
   padding: 1em;
-  
 }
 .library {
-
   display: grid;
   grid-template-rows: repeat(3, 1fr);
 }
@@ -110,4 +108,7 @@ input {
 }
 .close:hover {
   cursor: pointer;
+}
+#delete {
+  background-color: red;
 }

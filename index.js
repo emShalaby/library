@@ -36,6 +36,7 @@ const editInputs = Array.from(document.forms[1]).slice(0, -1);
 const newSubmitBtn = document.querySelector("#new-submit");
 const editSubmitBtn = document.querySelector("#edit-submit");
 const closeBtns = document.querySelectorAll(".close");
+const deleteBtn = document.querySelector("#delete");
 
 function orderLibrary(myLibrary) {
   myLibrary.sort((a, b) => {
@@ -167,4 +168,14 @@ editSubmitBtn.addEventListener("click", () => {
   );
   myLibrary.forEach(displayBook);
   editBookBtns = Array.from(document.querySelectorAll("edit-book"));
+});
+
+deleteBtn.addEventListener("click", () => {
+  Array.from(document.getElementsByClassName("book")).forEach((elem) =>
+    elem.remove()
+  );
+  delete myLibrary[openBook];
+  myLibrary.forEach(displayBook);
+
+  editBookModal.close();
 });
