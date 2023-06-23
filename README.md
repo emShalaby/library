@@ -1,2 +1,3 @@
 # library
-Library project part of The Odin Project
+
+## This project was part  of The Odin Project curriculum
